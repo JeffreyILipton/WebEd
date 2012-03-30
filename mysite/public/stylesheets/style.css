@@ -9,7 +9,7 @@ nav {
   background: url("http://d2o0t5hpnwv4c1.cloudfront.net/373_html5/final/images/nav_background.png");
 }
 nav ul {
-  margin: 0 auto;
+  margin: 0 250px auto;
   width: 940px;
   list-style: none;
 }
