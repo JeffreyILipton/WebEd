@@ -1,0 +1,23 @@
+html(lang="en")
+head
+   meta(charset="utf-8")
+   title = title
+
+body
+  header
+     hgroup
+	h1= title
+     nav
+     	-each navItem in navItems
+     	ul
+     	  li
+     	    a(href=navItem.link) navItem.text 
+  section#content
+    section#mainContent
+       div.boxgrid
+         img(src="http://d2o0t5hpnwv4c1.cloudfront.net/373_html5/final/images/flower.png")
+         div.cover(style="bottom:-260px")
+           a(href="http://www.google.com")
+             h3 Woot
+             p this is some test text. Its awesome
+

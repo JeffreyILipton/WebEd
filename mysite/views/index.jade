@@ -1,0 +1,36 @@
+html(lang="en")
+head
+  meta(charset="utf-8")
+  title = title
+  link(rel="stylesheet", href="/stylesheets/style.css")
+  script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+  script(src="/javascripts/testimage.js")
+body
+  header
+    hgroup
+      h1= title
+    nav
+      ul
+       -each navItem in navItems
+        li
+         a(href=navItem.link)=navItem.text 
+  div#content
+    aside
+       section#sideways
+         header
+           h3 sidebar
+         ul
+           -each sideItem in sideItems
+            li
+              a(href=sideItem.link)=sideItem.txt
+  
+    div#mainContent
+      -each gridItem in gridItems
+       div.boxgrid.captionfull
+         img(src=gridItem.image)
+         div.cover.boxcaption(style="bottom:-260px")
+           a(href=gridItem.link)
+             h3=gridItem.hdr
+             p=gridItem.txt 
+
+
