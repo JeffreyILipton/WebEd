@@ -1,10 +1,11 @@
-
 /**
  * Module dependencies.
  */
 
 var express = require('express')
   , routes = require('./routes');
+
+var portinterface = require('./portfoliointerface').PortInterface;
 
 var app = module.exports = express.createServer();
 
@@ -28,30 +29,36 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
-
+portinterface = new PortfolioInterface("192.168.1.140", 27017);	
 
 var navbar = [{link:"http://www.google.com","text":"Home"},
 	          {link:"#","text":"About"},
 	          {link:"#","text":"Blog"},
 	          {link:"#","text":"Contact"}];
-var grids = [{image:"http://d2o0t5hpnwv4c1.cloudfront.net/373_html5/final/images/flower.png",link:"http://www.google.com","hdr":"woot","txt":"Awww yeah"},
-			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"},
+
+var sides =[{link:"http://www.google.com","txt":"google"},
+            {link:"http://www.bing.com","txt":"bing"},
+            {link:"http://www.yahoo.com","txt":"yahoo"}];
+
+/*var grids = [{image:"http://d2o0t5hpnwv4c1.cloudfront.net/373_html5/final/images/flower.png",link:"http://www.google.com","hdr":"woot","txt":"Awww yeah"},
+			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"Hotel Innovation","txt":"Presented at the Cornell NYC innovation network"},
 			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"},
 			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"},
 			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"},
 			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"},
 			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"}];
-var sides =[{link:"http://www.google.com","txt":"google"},
-            {link:"http://www.bing.com","txt":"bing"},
-            {link:"http://www.yahoo.com","txt":"yahoo"}];
+*/
 
 // Routes
 app.get('/', function(req,res){
-	res.render('index.jade',{locals:{
-	   title:"TESTING",
-	   navItems: navbar,
-	   gridItems:grids,
-	   sideItems:sides}});
+    portinterface.getMedia(function(error, grids){
+		console.log(grids);
+		res.render('index.jade',{locals:{
+			title:"TESTING",
+			navItems: navbar,
+			gridItems:grids,
+			sideItems:sides}});
+		});
 });
 
 app.listen(3002);
