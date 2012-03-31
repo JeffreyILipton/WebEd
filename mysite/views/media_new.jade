@@ -1,0 +1,56 @@
+html(lang="en")
+head
+  meta(charset="utf-8")
+  title = title
+  link(rel="stylesheet", href="/stylesheets/style.css")
+  link(rel="stylesheet", href="/stylesheets/nav.css")
+  link(rel="stylesheet", href="/stylesheets/boxgrid.css")
+  script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+  script(src="/javascripts/testimage.js")
+body
+  header
+    hgroup
+      h1= title
+    nav
+      ul
+       -each navItem in navItems
+        li
+         a(href=navItem.link)=navItem.text 
+  div#content
+    aside
+       section#sideways
+         header
+           h3 sidebar
+         ul
+           -each sideItem in sideItems
+            li
+              a(href=sideItem.link)=sideItem.txt
+  
+    div#mainContent
+      div
+        h2 Enter new Media Attention
+        form( method="post")
+          div
+            div
+                span Header :
+                input(type="text", name="hdr", id="mediaHdr")
+            div
+                span Caption :
+                textarea( name="txt", rows=2, id="mediaTxt")
+            div
+                span Image Link :
+                input(type="text", name="ilink", id="mediaImg")
+            div
+                span Click Link:
+                input(type="text", name="clink", id="mediaLink")
+            div#newItem
+            input(type="submit", value="preview")
+      
+      div.boxgrid.captionfull
+       img(src=blankimage)
+         div.cover.boxcaption(style="bottom:-260px")
+           a(href="#")
+             h3 Enter Header
+             p Enter txt
+
+

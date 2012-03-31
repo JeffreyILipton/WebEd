@@ -56,10 +56,32 @@ app.get('/', function(req,res){
 		res.render('index.jade',{locals:{
 			title:"TESTING",
 			navItems: navbar,
-			gridItems:grids,
-			sideItems:sides}});
+			sideItems:sides,
+			gridItems:grids
+			}});
 		});
 });
+
+app.get('/media/new', function(req, res) {
+    res.render('media_new.jade', { locals: {
+        title: 'New Media',
+        navItems: navbar,
+		sideItems:sides,
+        blankimage:"http://d2o0t5hpnwv4c1.cloudfront.net/373_html5/final/images/flower.png"
+    }
+    });
+});
+/*
+app.post('/blog/new', function(req, res){
+    articleProvider.save({
+        title: req.param('title'),
+        body: req.param('body')
+    }, function( error, docs) {
+        res.redirect('/')
+    });
+});
+*/
+
 
 app.listen(3002);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
