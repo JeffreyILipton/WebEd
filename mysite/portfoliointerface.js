@@ -9,6 +9,15 @@ PortfolioInterface = function(host, port) {
   this.db.open(function(){});
 };
 
+//getCollection
+
+PortfolioInterface.prototype.getCollection= function(callback) {
+  this.db.collection('media', function(error, article_collection) {
+    if( error ) callback(error);
+    else callback(null, article_collection);
+  });
+};
+
 
 //getMedia
 PortfolioInterface.prototype.getMedia= function(callback) {
@@ -25,20 +34,29 @@ PortfolioInterface.prototype.getMedia= function(callback) {
 
 
 //save
-PortfolioInterface.prototype.saveArticle = function(articles, callback) {
+PortfolioInterface.prototype.saveMedia = function(articles, callback) {
+	console.log("working at saveMedia");
     this.getCollection(function(error, article_collection) {
       if( error ) callback(error)
       else {
+		console.log("received: "+articles);
         if( typeof(articles.length)=="undefined")
           articles = [articles];
+		  console.log("made into array");
+        
 		for (articleid in articles){
-		  article = articles[articleid];
-		  if (typeof(articles.img)=="undefined"){throw("noimg");}
-		  if (typeof(articles.link)=="undefined"){article.link="#";}
-		  if (typeof(articles.hdr)=="undefined"){article.hdr="";}
-		  if (typeof(articles.txt)=="undefined"){article.txt="";}
+		  var article = articles[articleid];
+		  console.log("Article:"+articleid+" >"+article);
+		  if (typeof(article.link)=="undefined"){article.link="#";}
+		  if (typeof(article.hdr)=="undefined"){article.hdr="";}
+		  if (typeof(article.txt)=="undefined"){article.txt="";}
+		  if ((typeof(article.image)=="undefined")){throw("noimg");}
+		  
+		  
 		}
+		
         article_collection.insert(articles, function() {
+          console.log("inserting");
           callback(null, articles);
         });
       }

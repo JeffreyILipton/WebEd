@@ -28,11 +28,9 @@ body
   
     div#mainContent
       -each gridItem in gridItems
-       div.boxgrid.captionfull
+        div.boxgrid.captionfull
          img(src=gridItem.image)
          div.cover.boxcaption(style="bottom:-260px")
            a(href=gridItem.link)
              h3=gridItem.hdr
-             p=gridItem.txt 
-
-
+             p=gridItem.txt

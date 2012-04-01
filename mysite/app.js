@@ -29,7 +29,7 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
-portinterface = new PortfolioInterface("192.168.1.140", 27017);	
+portinterface = new PortfolioInterface("localhost", 27017);	
 
 var navbar = [{link:"http://www.google.com","text":"Home"},
 	          {link:"#","text":"About"},
@@ -52,7 +52,6 @@ var sides =[{link:"http://www.google.com","txt":"google"},
 // Routes
 app.get('/', function(req,res){
     portinterface.getMedia(function(error, grids){
-		console.log(grids);
 		res.render('index.jade',{locals:{
 			title:"TESTING",
 			navItems: navbar,
@@ -71,16 +70,19 @@ app.get('/media/new', function(req, res) {
     }
     });
 });
-/*
-app.post('/blog/new', function(req, res){
-    articleProvider.save({
-        title: req.param('title'),
-        body: req.param('body')
-    }, function( error, docs) {
+
+app.post('/media/new', function(req, res){
+    console.log("posted");
+    portinterface.saveMedia({
+        image: req.param('img'),
+        link: req.param('link'),
+        hdr: req.param("hdr"),
+        txt: req.param("txt")
+        },function( error, docs) {
         res.redirect('/')
     });
-});
-*/
+});	
+
 
 
 app.listen(3002);
