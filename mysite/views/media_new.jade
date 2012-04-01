@@ -6,7 +6,10 @@ head
   link(rel="stylesheet", href="/stylesheets/nav.css")
   link(rel="stylesheet", href="/stylesheets/boxgrid.css")
   script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+  script(src="http://malsup.github.com/jquery.form.js") 
   script(src="/javascripts/testimage.js")
+  script(src="/javascripts/loadmedia.js")
+
 body
   header
     hgroup
@@ -29,7 +32,7 @@ body
     div#mainContent
       div
         h2 Enter new Media Attention
-        form( method="post")
+        form#mediaForm( method="post")
           div
             div
                 span Header :
@@ -44,13 +47,13 @@ body
                 span Click Link:
                 input(type="text", name="clink", id="mediaLink")
             div#newItem
-            input(type="submit", value="preview")
+            input#submit(type="submit", value="preview")
       
       div.boxgrid.captionfull
        img(src=blankimage)
-         div.cover.boxcaption(style="bottom:-260px")
-           a(href="#")
-             h3 Enter Header
-             p Enter txt
+       div.cover.boxcaption(style="bottom:-260px")
+         a(href="#")
+           h3 Enter Header
+           p Enter txt
 
 
