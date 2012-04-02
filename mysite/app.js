@@ -35,11 +35,6 @@ var navbar = [{link:"http://www.google.com","text":"Home"},
 	          {link:"#","text":"Blog"},
 	          {link:"#","text":"Contact"}];
 var grids = [{image:"http://d2o0t5hpnwv4c1.cloudfront.net/373_html5/final/images/flower.png",link:"http://www.google.com","hdr":"woot","txt":"Awww yeah"},
-			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"},
-			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"},
-			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"},
-			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"},
-			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"},
 			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"}];
 var sides =[{link:"http://www.google.com","txt":"google"},
             {link:"http://www.bing.com","txt":"bing"},

@@ -1,36 +1,6 @@
 article aside details figcaption figure footer heater hgroup menu section {
   display: block;
 }
-
-nav {
-  display: block;
-  position: absolute;
-  left: 0;
-  width: 100%;
-  background: url("http://d2o0t5hpnwv4c1.cloudfront.net/373_html5/final/images/nav_background.png");
-}
-nav ul {
-  margin: 0 250px auto;
-  width: 940px;
-  list-style: none;
-}
-nav ul li {
-  float: left;
-}
-nav ul li a {
-  display: block;
-  margin-right: 20px;
-  font-size: 14px;
-  line-height: 44px;
-  text-align: center;
-  text-decoration: none;
-  color: #777;
-  width: 140px;
-}
-nav ul li a:hover {
-  color: #f5f;
-}
-
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
