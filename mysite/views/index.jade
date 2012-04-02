@@ -6,8 +6,11 @@ head
   link(rel="stylesheet", href="/stylesheets/nav.css")
   link(rel="stylesheet", href="/stylesheets/boxgrid.css")
   link(rel="stylesheet", href="/stylesheets/intro.css")
+  link(rel="stylesheet", href="/stylesheets/myslider.css")
   script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
   script(src="/javascripts/testimage.js")
+  script(src="/javascripts/slider.js")
+  script(src="/javascripts/nivo-slider/jquery.nivo.slider.pack.js")
 body
   header
     hgroup
@@ -29,9 +32,16 @@ body
   
     div#mainContent
      section#intro
-       hgroup
-         h2=intro.hdr
-       p=intro.txt
+       div#slider.nivoSlider
+         img(src="images/nemo.jpg", alt="")
+         a(href="http://dev7studios.com")
+           img(src="images/up.jpg" ,alt="", title="")
+         img(src="images/toystory.jpg" ,alt="" ,title="This is an example of a caption")
+         img(src="images/walle.jpg", alt="")
+       div#captioning
+         header
+           h2=homeintro.hdr
+           p=homeintro.txt
       
     
      -each gridItem in gridItems
