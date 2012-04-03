@@ -39,7 +39,7 @@ $(document).ready(function(){
 				console.log($(this).serializeObject());
 				
 				
-				$.post('/recaptcha',$(this).serializeObject(),
+				$.post('/contact',$(this).serializeObject(),
 				
 					function(data){
 						if(parseInt(data)==-1)

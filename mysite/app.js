@@ -6,6 +6,7 @@ var express = require('express')
   , routes = require('./routes');
 
 var recaptcha_async = require('recaptcha-async');
+var emailer = require('mailer');
 
 var portinterface = require('./portfoliointerface').PortInterface;
 
@@ -117,11 +118,8 @@ app.get('/contact', function(req,res){
 		title:"Contact Jeff"
 		}});
 });
-app.post('/contact', function(req, res){
-    console.log("posted "+req);
-});	
 
-app.post('/recaptcha',function(req,res,next){
+app.post('/contact',function(req,res,next){
 	    var recaptcha = new recaptcha_async.reCaptcha();
 
         // Eventhandler that is triggered by checkAnswer()
@@ -132,6 +130,30 @@ app.post('/recaptcha',function(req,res,next){
 					var message = req.param("message");
 					var name = req.param("name");
 					console.log(name+","+email);
+					
+					
+					emailer.send({
+						host:'smtp.gmail.com',
+						port:'465',
+						ssl:true,
+						domain:'gmail.com',
+						to:'jeffreyilipton@gmail.com',
+						from:'jeffreyiliptonsbot@gmail.com',
+						subject: subject,
+						body:'email from :'+name+'<'+email+'>\n'+message,
+						authentication:'login',
+						username:'jeffreyiliptonsbot',
+						password:'MyBotIsDumb1'
+					},
+					function(err,result){
+						if(err){console.log(err);}
+					});
+					
+					
+					
+					
+					
+					
                 }else{
 					console.log("SPAM!!!");
 					
