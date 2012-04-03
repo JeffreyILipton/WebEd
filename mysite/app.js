@@ -53,6 +53,7 @@ app.get('/', function(req,res){
 			title:"JeffreyILipton.com",
 			navItems: navbar,
 			sideItems:sides,
+			sidebar:"Sidebar",
 			homeintro: myintro,
 			gridItems:grids}
 			});
@@ -65,6 +66,7 @@ app.get('/portfolio', function(req,res){
 			title:"Portfolio",
 			navItems: navbar,
 			sideItems:sides,
+			sidebar:"Sidebar",
 			sectionItems:[{id:"talks", hdr:"Talks and Outreach", gridItems:grids},
 						  {id:"projects", hdr:"Projects", gridItems:grids}]			
 			}});
@@ -77,6 +79,7 @@ app.get('/media', function(req,res){
 			title:"Media Coverage",
 			navItems: navbar,
 			sideItems:sides,
+			sidebar:"Sidebar",
 			sectionItems:[{id:"print", hdr:"Print Articles", gridItems:grids},
 						  {id:"videos", hdr:"Videos", gridItems:grids},
 						  {id:"webarticles",hdr:"Online Articles", gridItems:grids}]			
@@ -89,6 +92,7 @@ app.get('/media/new', function(req, res) {
         title: 'Set New Media',
         navItems: navbar,
 		sideItems:sides,
+		sidebar:"Sidebar",
         blankimage:""
     }
     });
@@ -106,6 +110,11 @@ app.post('/media/new', function(req, res){
     });
 });	
 
+app.get('/contact', function(req,res){
+   	res.render('contact.jade',{locals:{
+		title:"testing"
+		}});
+});
 
 
 app.listen(3002);

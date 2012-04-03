@@ -1,0 +1,105 @@
+html(lang="en")
+head
+  meta(charset="utf-8")
+  title Testing form
+  link(rel='stylesheet', href='/stylesheets/jqtransformplugin/jqtransform.css')
+  link(rel='stylesheet', href='/stylesheets/formValidator/validationEngine.jquery.css')
+  link(rel='stylesheet', href='/stylesheets/demo.css')
+  script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+  script(src='/javascripts/jqtransformplugin/jquery.jqtransform.js')
+  script(src='/javascripts/contactscript.js')
+  script(src='/javascripts/formValidator/jquery.validationEngine.js')
+
+
+body
+  div#mainContent
+   div#form-container
+    h1 Fancy Contact Form
+      h2 Drop us a line and we will get back to you
+      form#contact-form.jqtransformdone(name='contact-form', method='post')
+        table(width='100%', border='0', cellspacing='0', cellpadding='5')
+          tbody
+            tr
+              td(width='15%')
+                label(for='name') Name
+              td(width='70%')
+                .jqTransformInputWrapper.jqTransformSafari(style='width: 210px;')
+                  .jqTransformInputInner
+                    div
+                      input.jqtranformdone.jqTransformInput(id='name.validate[required,custom[onlyLetter]]',type='text', name='name', value='', style='width: 226px;')
+              td#errOffset(width='15%')  
+            tr
+              td
+                label(for='email') Email
+              td
+                .jqTransformInputWrapper.jqTransformSafari(style='width: 210px;')
+                  .jqTransformInputInner
+                    div
+                      input.jqtranformdone.jqTransformInput((id='email.validate[required,custom[email]]', type='text', name='email', value='', style='width: 226px;')
+              td  
+            tr
+              td
+                label(for='subject') Subject
+              td
+                .jqTransformSelectWrapper(style='z-index: 10; width: 165px;')
+                  div
+                    span(style='width: 134px;')  - Choose -
+                    a.jqTransformSelectOpen(href='#')
+                  ul(style='width: 163px; height: 125px; overflow-x: hidden; overflow-y: hidden; display: none; visibility: visible;')
+                    li
+                      a.selected(href='#', index='0')  - Choose -
+                    li
+                      a(href='#', index='1') Question
+                    li
+                      a(href='#', index='2') Business proposal
+                    li
+                      a(href='#', index='3') Advertising
+                    li
+                      a(href='#', index='4') Complaint
+                  select#subject.jqTransformHidden(name='subject', style='')
+                    option(value='', selected='selected')  - Choose -
+                    option(value='Question') Question
+                    option(value='Business proposal') Business proposal
+                    option(value='Advertisement') Advertising
+                    option(value='Complaint') Complaint
+              td  
+            tr
+              td(valign='top')
+                label(for='message') Message
+              td
+                table.jqTransformTextarea(cellspacing='0', cellpadding='0', border='0')
+                  tbody
+                    tr
+                      td#jqTransformTextarea-tl
+                      td#jqTransformTextarea-tm
+                      td#jqTransformTextarea-tr
+                    tr
+                      td#jqTransformTextarea-ml  
+                      td#jqTransformTextarea-mm.jqTransformSafariTextarea
+                        div(style='height: 80px; width: 192px;')
+                          textarea.jqtransformdone(id='message.validate[required]', name='message', cols='35', rows='5')
+                      td#jqTransformTextarea-mr  
+                    tr
+                      td#jqTransformTextarea-bl
+                      td#jqTransformTextarea-bm
+                      td#jqTransformTextarea-br
+              td(valign='top')  
+            tr
+              td
+                label(for='captcha') 13 + 3 =
+              td
+                .jqTransformInputWrapper.jqTransformSafari(style='width: 210px;')
+                  .jqTransformInputInner
+                    div
+                      input.jqtranformdone.jqTransformInput(id='captcha.validate[required,custom[onlyNumber]]', type='text', name='captcha', style='width: 226px;')
+              td(valign='top')  
+            tr
+              td(valign='top')  
+              td(colspan='2')
+                button#button.jqTransformButton(name='button', type='submit')
+                  span
+                    span Submit
+                button#button2.jqTransformButton(name='button2', type='reset')
+                  span
+                    span Reset
+                img#loading(src='/images/img/ajax-load.gif', width='16', height='16', alt='loading')

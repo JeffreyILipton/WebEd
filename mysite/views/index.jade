@@ -2,15 +2,17 @@ html(lang="en")
 head
   meta(charset="utf-8")
   title = title
+  link(rel="stylesheet", href="/stylesheets/rest.css")
   link(rel="stylesheet", href="/stylesheets/style.css")
   link(rel="stylesheet", href="/stylesheets/nav.css")
   link(rel="stylesheet", href="/stylesheets/boxgrid.css")
   link(rel="stylesheet", href="/stylesheets/intro.css")
   link(rel="stylesheet", href="/stylesheets/myslider.css")
-  link(rel="stylesheet", href="/stylesheets/rest.css")
+  
   script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
   script(src="/javascripts/testimage.js")
   script(src="/javascripts/slider.js")
+  script(src="/javascripts/tweakintro.js")
   script(src="/javascripts/nivo-slider/jquery.nivo.slider.pack.js")
 body
   header
@@ -21,33 +23,31 @@ body
        -each navItem in navItems
         li
          a(href=navItem.link)=navItem.text 
-  section#topsec
-     div#intro
-      div#captioning
-       header
-         h2=homeintro.hdr
-         p=homeintro.txt
-     div#slidersec
-      div#slider.nivoSlider
-        img(src="images/nemo.jpg", alt="")
-        a(href="http://dev7studios.com")
-          img(src="images/up.jpg" ,alt="", title="")
-        img(src="images/toystory.jpg" ,alt="" ,title="This is an example of a caption")
-        img(src="images/walle.jpg", alt="")
+  section#intro
+    div#slider.nivoSlider
+      img(src="images/nemo.jpg", alt="")
+      a(href="http://dev7studios.com")
+        img(src="images/up.jpg" ,alt="", title="")
+      img(src="images/toystory.jpg" ,alt="" ,title="This is an example of a caption")
+      img(src="images/walle.jpg", alt="")
+    div#captioning
+      header
+        h1=homeintro.hdr
+        p=homeintro.txt
   
   
   div#content
     aside
        section#sideways
          header
-           h3 sidebar
+           h3=sidebar
          ul
            -each sideItem in sideItems
             li
               a(href=sideItem.link)=sideItem.txt
   
     div#mainContent     
-       
+      h2 Media Coverage
       -each gridItem in gridItems
         div.boxgrid.captionfull
          img(src=gridItem.image)
