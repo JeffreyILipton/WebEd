@@ -28,7 +28,7 @@ $(document).ready(function(){
 			if(use_ajax)
 			{
 				$('#loading').css('visibility','visible');
-				$.post('submit.php',$(this).serialize()+'&ajax=1',
+				$.post('/contact',$(this).serialize()+'&ajax=1',
 				
 					function(data){
 						if(parseInt(data)==-1)

@@ -112,10 +112,12 @@ app.post('/media/new', function(req, res){
 
 app.get('/contact', function(req,res){
    	res.render('contact.jade',{locals:{
-		title:"testing"
+		title:"Contact Jeff"
 		}});
 });
-
+app.post('/contact', function(req, res){
+    console.log("posted "+req);
+});	
 
 app.listen(3002);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
