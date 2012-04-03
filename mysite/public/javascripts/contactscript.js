@@ -18,7 +18,7 @@ $(document).ready(function(){
 	 })
 
 	$("#contact-form").submit(function(e){
-
+			console.log("subject val is "+$('#subject').val());
 			if(!$('#subject').val().length)
 			{
 				$.validationEngine.buildPrompt(".jqTransformSelectWrapper","* This field is required","error")

@@ -26,7 +26,7 @@ body
                 .jqTransformInputWrapper.jqTransformSafari(style='width: 210px;')
                   .jqTransformInputInner
                     div
-                      input.jqtranformdone.jqTransformInput.validate[required,custom[onlyLetter]](id='name',type='text', name='name', value='', style='width: 226px;')
+                      input(class='jqtranformdone jqTransformInput validate[required,custom[onlyLetter]]', id='name',type='text', name='name', value='', style='width: 226px;')
               td#errOffset(width='15%')  
             tr
               td
@@ -35,35 +35,17 @@ body
                 .jqTransformInputWrapper.jqTransformSafari(style='width: 210px;')
                   .jqTransformInputInner
                     div
-                      input.jqtranformdone.jqTransformInput.validate[required,custom[email]]((id='email', type='text', name='email', value='', style='width: 226px;')
+                      input(class='validate[required,custom[email]] jqtranformdone jqTransformInput',id='email', type='text', name='email', value='', style='width: 226px;')
               td
-                
             tr
               td
                 label(for='subject') Subject
               td
-                .jqTransformSelectWrapper(style='z-index: 10; width: 165px;')
-                  div
-                    span(style='width: 134px;')  - Choose -
-                    a.jqTransformSelectOpen(href='#')
-                  ul(style='width: 163px; height: 125px; overflow-x: hidden; overflow-y: hidden; display: none; visibility: visible;')
-                    li
-                      a.selected(href='#', index='0')  - Choose -
-                    li
-                      a(href='#', index='1') Question
-                    li
-                      a(href='#', index='2') Business proposal
-                    li
-                      a(href='#', index='3') Advertising
-                    li
-                      a(href='#', index='4') Complaint
-                  select.jqTransformHidden(id='subject', name='subject')
-                    option(value='', selected='selected')  - Choose -
-                    option(value='Question') Question
-                    option(value='Business proposal') Business proposal
-                    option(value='Advertisement') Advertising
-                    option(value='Complaint') Complaint
-              td  
+                .jqTransformInputWrapper.jqTransformSafari(style='width: 210px;')
+                  .jqTransformInputInner
+                    div
+                      input(id='subject', class='validate[required,custom[onlyLetter]] jqtranformdone jqTransformInput', type='text', name='subject', value='', style='width: 226px;')
+              td 
             tr
               td(valign='top')
                 label(for='message') Message
@@ -92,7 +74,7 @@ body
                 .jqTransformInputWrapper.jqTransformSafari(style='width: 210px;')
                   .jqTransformInputInner
                     div
-                      input.jqtranformdone.jqTransformInput.validate[required,custom[onlyNumber]](id='captcha', type='text', name='captcha', style='width: 226px;')
+                      input(class='jqtranformdone jqTransformInput validate[required,custom[onlyNumber]]', id='captcha', type='text', name='captcha', style='width: 226px;')
               td(valign='top')  
             tr
               td(valign='top')  
