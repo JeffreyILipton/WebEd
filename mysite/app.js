@@ -115,7 +115,10 @@ app.post('/media/new', function(req, res){
 
 app.get('/contact', function(req,res){
    	res.render('contact.jade',{locals:{
-		title:"Contact Jeff"
+		title:"Contact Jeff",
+        navItems: navbar,
+		sideItems:sides,
+		sidebar:"Sidebar",
 		}});
 });
 

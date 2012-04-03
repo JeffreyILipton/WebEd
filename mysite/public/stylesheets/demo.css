@@ -3,23 +3,16 @@ body,h1,h2,h3,p,quote,small,form,input,ul,li,ol,label{
 	padding:0px;
 }
 
-body{
-	color:#555555;
-	font-size:13px;
-	background: url(/images/img/dark_wood_texture.jpg) #282828;
-	font-family:Arial, Helvetica, sans-serif;
-}
+
 
 .clear{
 	clear:both;
 }
 
-#main-container{
-	width:400px;
-	margin:30px auto;
-}
+
 
 #form-container{
+    margin-top:20px;
 	background-color:#f5f5f5;
 	padding:15px;
 	
@@ -29,21 +22,11 @@ body{
 	border-radius:12px;
 }
 
-td{
+#form-container td{
 	white-space:nowrap;
 }
 
-a, a:visited {
-	color:#00BBFF;
-	text-decoration:none;
-	outline:none;
-}
-
-a:hover{
-	text-decoration:underline;
-}
-
-h1{
+#form-container h1{
 	color:#777777;
 	font-size:22px;
 	font-weight:normal;
@@ -51,7 +34,7 @@ h1{
 	margin-bottom:5px;
 }
 
-h2{
+#form-container h2{
 	font-weight:normal;
 	font-size:10px;
 	
@@ -65,19 +48,19 @@ h2{
 	padding-bottom:10px;
 }
 
-label{
+#form-container label{
 	text-transform:uppercase;
 	font-size:10px;
 	font-family:Tahoma,Arial,Sans-serif;
 }
 
-textarea{
+#form-container textarea{
 	color:#404040;
 	font-family:Arial,Helvetica,sans-serif;
 	font-size:12px;
 }
 
-td > button{
+#form-container td > button{
 	text-indent:8px;
 }
 
