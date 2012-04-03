@@ -6,9 +6,11 @@ head
   link(rel='stylesheet', href='/stylesheets/formValidator/validationEngine.jquery.css')
   link(rel='stylesheet', href='/stylesheets/demo.css')
   script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+  script(src='/javascripts/serializeobject.js')
   script(src='/javascripts/jqtransformplugin/jquery.jqtransform.js')
   script(src='/javascripts/contactscript.js')
   script(src='/javascripts/formValidator/jquery.validationEngine.js')
+  script(src='http://www.google.com/recaptcha/api/js/recaptcha_ajax.js')
 
 
 body
@@ -68,14 +70,7 @@ body
                       td#jqTransformTextarea-br
               td(valign='top')  
             tr
-              td
-                label(for='captcha') 13 + 3 =
-              td
-                .jqTransformInputWrapper.jqTransformSafari(style='width: 210px;')
-                  .jqTransformInputInner
-                    div
-                      input(class='jqtranformdone jqTransformInput validate[required,custom[onlyNumber]]', id='captcha', type='text', name='captcha', style='width: 226px;')
-              td(valign='top')  
+              div#mycaptcha  
             tr
               td(valign='top')  
               td(colspan='2')

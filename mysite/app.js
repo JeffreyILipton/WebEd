@@ -5,6 +5,8 @@
 var express = require('express')
   , routes = require('./routes');
 
+var recaptcha_async = require('recaptcha-async');
+
 var portinterface = require('./portfoliointerface').PortInterface;
 
 var app = module.exports = express.createServer();
@@ -118,6 +120,36 @@ app.get('/contact', function(req,res){
 app.post('/contact', function(req, res){
     console.log("posted "+req);
 });	
+
+app.post('/recaptcha',function(req,res,next){
+	    var recaptcha = new recaptcha_async.reCaptcha();
+
+        // Eventhandler that is triggered by checkAnswer()
+        recaptcha.on('data', function (recaptcha_response) {
+                if(recaptcha_response.is_valid){
+					var email = req.param("email");
+					var subject = req.param("subject");
+					var message = req.param("message");
+					var name = req.param("name");
+					console.log(name+","+email);
+                }else{
+					console.log("SPAM!!!");
+					
+	            }
+                res.render('contact.jade', {
+							locals: {
+									title: recaptcha_response.is_valid ? 'valid' : 'invalid'
+									}
+			    });
+        });
+
+        // Check the user response by calling the google servers
+        // and sends a 'data'-event
+        recaptcha.checkAnswer('6LcPwM8SAAAAABDeDYyKeDksx5xcUeEg9sR1lSuj',  // private reCaptchakey 
+                          req.connection.remoteAddress,
+                          req.body.recaptcha_challenge_field,
+                          req.body.recaptcha_response_field);
+});
 
 app.listen(3002);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

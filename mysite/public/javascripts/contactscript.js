@@ -1,4 +1,12 @@
 $(document).ready(function(){
+	Recaptcha.create("6LcPwM8SAAAAAJ2EpFdyPvctQmG9wpFd_pV3AguL",
+	 "mycaptcha",{
+		           theme:"red",
+		           callback:Recaptcha.focus_response_field
+			   }
+	);
+	
+	
 	$('#contact-form').jqTransform();
 
 	$("button").click(function(){
@@ -28,7 +36,10 @@ $(document).ready(function(){
 			if(use_ajax)
 			{
 				$('#loading').css('visibility','visible');
-				$.post('/contact',$(this).serialize()+'&ajax=1',
+				console.log($(this).serializeObject());
+				
+				
+				$.post('/recaptcha',$(this).serializeObject(),
 				
 					function(data){
 						if(parseInt(data)==-1)
