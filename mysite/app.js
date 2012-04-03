@@ -46,7 +46,7 @@ var sides =[{link:"http://www.google.com","txt":"google"},
 */
 
 // Routes
-var myintro = [{hdr:"Welcome to JeffreyILipton.com",txt:"This is the personal website for Jeffrey Lipton"}];
+var myintro = {hdr:"Welcome to JeffreyILipton.com",txt:"This is the personal website for Jeffrey Lipton"};
 app.get('/', function(req,res){
     portinterface.getMedia(function(error, grids){
 		res.render('index.jade',{locals:{

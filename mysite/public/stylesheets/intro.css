@@ -1,13 +1,23 @@
+#topsec {
+  padding: 50px 0px 0px 0px;
+  display: table;
+}
+#slidersec {
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  display: table-cell;
+}
 #intro {
+  display: table-cell;
+  width: 336;
   position: relative;
-  margin: 20px auto;
-  padding: 44px;
-  background: #467612 url("http://d2o0t5hpnwv4c1.cloudfront.net/373_html5/final/images/intro_background.png") repeat-x;
+  padding: 0px;
+  background: #467612;
   -webkit-background-size: 100%;
   -o-background-size: 100%;
   -khtml-background-size: 100%;
-  -moz-border-radius: 22px;
-  -webkit-border-radius: 22px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
 }
 #intro h2 p {
   position: relative;
@@ -15,7 +25,7 @@
   width: 336px;
 }
 #intro h2 {
-  padding: 0 0 22px 0;
+  padding: 0 0 0px 0;
   font-weight: normal;
   color: #fff;
 }
@@ -27,8 +37,12 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 900px;
   height: 100%;
   -moz-border-radius: 22px;
   -webkit-border-radius: 22px;
+}
+#captioning {
+  padding: 0px 0px 0px 0px;
+  width: 300px;
+  border: 1px solid #f00;
 }

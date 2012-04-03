@@ -7,6 +7,7 @@ head
   link(rel="stylesheet", href="/stylesheets/boxgrid.css")
   link(rel="stylesheet", href="/stylesheets/intro.css")
   link(rel="stylesheet", href="/stylesheets/myslider.css")
+  link(rel="stylesheet", href="/stylesheets/rest.css")
   script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
   script(src="/javascripts/testimage.js")
   script(src="/javascripts/slider.js")
@@ -20,6 +21,21 @@ body
        -each navItem in navItems
         li
          a(href=navItem.link)=navItem.text 
+  section#topsec
+     div#intro
+      div#captioning
+       header
+         h2=homeintro.hdr
+         p=homeintro.txt
+     div#slidersec
+      div#slider.nivoSlider
+        img(src="images/nemo.jpg", alt="")
+        a(href="http://dev7studios.com")
+          img(src="images/up.jpg" ,alt="", title="")
+        img(src="images/toystory.jpg" ,alt="" ,title="This is an example of a caption")
+        img(src="images/walle.jpg", alt="")
+  
+  
   div#content
     aside
        section#sideways
@@ -30,21 +46,9 @@ body
             li
               a(href=sideItem.link)=sideItem.txt
   
-    div#mainContent
-     section#intro
-       div#slider.nivoSlider
-         img(src="images/nemo.jpg", alt="")
-         a(href="http://dev7studios.com")
-           img(src="images/up.jpg" ,alt="", title="")
-         img(src="images/toystory.jpg" ,alt="" ,title="This is an example of a caption")
-         img(src="images/walle.jpg", alt="")
-       div#captioning
-         header
-           h2=homeintro.hdr
-           p=homeintro.txt
-      
-    
-     -each gridItem in gridItems
+    div#mainContent     
+       
+      -each gridItem in gridItems
         div.boxgrid.captionfull
          img(src=gridItem.image)
          div.cover.boxcaption(style="bottom:-260px")
