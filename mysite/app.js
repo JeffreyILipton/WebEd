@@ -63,15 +63,23 @@ app.get('/', function(req,res){
 		});
 });
 
+var vids=[{link:'http://www.youtube.com/embed/s2QMYFc9QQk', hdr:'Woot'},
+{link:'http://www.youtube.com/embed/s2QMYFc9QQk', hdr:"o my"}];
+
+
 app.get('/portfolio', function(req,res){
     portinterface.getMedia(function(error, grids){
+     		console.log(grids);
+     		console.log(vids);
 		res.render('boxdisplays.jade',{locals:{
 			title:"Portfolio",
 			navItems: navbar,
 			sideItems:sides,
 			sidebar:"Sidebar",
-			sectionItems:[{id:"talks", hdr:"Talks and Outreach", gridItems:grids},
-						  {id:"projects", hdr:"Projects", gridItems:grids}]			
+			sectionItems:[{id:"talks", hdr:"Talks and Outreach", 
+			               vidItems:vids,gridItems:grids},
+			              {id:"projects", hdr:"Projects",
+			                vidItems:[], gridItems:grids}]			
 			}});
 		});
 });
@@ -83,9 +91,9 @@ app.get('/media', function(req,res){
 			navItems: navbar,
 			sideItems:sides,
 			sidebar:"Sidebar",
-			sectionItems:[{id:"print", hdr:"Print Articles", gridItems:grids},
-						  {id:"videos", hdr:"Videos", gridItems:grids},
-						  {id:"webarticles",hdr:"Online Articles", gridItems:grids}]			
+			sectionItems:[{id:"print", hdr:"Print Articles", vidItems:[], gridItems:grids},
+						  {id:"videos", hdr:"Videos", vidItems:[],gridItems:grids},
+						  {id:"webarticles",hdr:"Online Articles",vidItems:[], gridItems:grids}]			
 			}});
 		});
 });

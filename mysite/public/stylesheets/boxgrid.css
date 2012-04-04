@@ -1,4 +1,9 @@
-.boxgrid {
+#contentTable {
+  display: table;
+  border-collapse: collapse;
+}
+.boxgrid,
+display table-cell {
   width: 280px;
   height: 208px;
   margin: 10px;

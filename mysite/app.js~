@@ -5,6 +5,9 @@
 var express = require('express')
   , routes = require('./routes');
 
+var recaptcha_async = require('recaptcha-async');
+var emailer = require('mailer');
+
 var portinterface = require('./portfoliointerface').PortInterface;
 
 var app = module.exports = express.createServer();
@@ -37,15 +40,6 @@ var navbar = [{link:"/","text":"Home"},
 	          {link:"/portfolio","text":"portfolio"},
 	          {link:"/contact","text":"Contact"}];
 
-<<<<<<< HEAD
-var navbar = [{link:"http://www.google.com","text":"Home"},
-	          {link:"#","text":"About"},
-	          {link:"#","text":"Blog"},
-	          {link:"#","text":"Contact"}];
-var grids = [{image:"http://d2o0t5hpnwv4c1.cloudfront.net/373_html5/final/images/flower.png",link:"http://www.google.com","hdr":"woot","txt":"Awww yeah"},
-			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"O snap","txt":"Im fucking awesome"}];
-=======
->>>>>>> 811c378146636d1938651ec9d118b590b318ba19
 var sides =[{link:"http://www.google.com","txt":"google"},
             {link:"http://www.bing.com","txt":"bing"},
             {link:"http://www.yahoo.com","txt":"yahoo"}];
@@ -55,27 +49,37 @@ var sides =[{link:"http://www.google.com","txt":"google"},
 */
 
 // Routes
+var myintro = {hdr:"Welcome to JeffreyILipton.com",txt:"This is the personal website for Jeffrey Lipton"};
 app.get('/', function(req,res){
     portinterface.getMedia(function(error, grids){
 		res.render('index.jade',{locals:{
 			title:"JeffreyILipton.com",
 			navItems: navbar,
 			sideItems:sides,
-			intro:{hdr:"Welcome to JeffreyILipton.com",
-			       txt:"This is the personal website for Jeffrey Lipton"},
-			gridItems:grids
-			}});
+			sidebar:"Sidebar",
+			homeintro: myintro,
+			gridItems:grids}
+			});
 		});
 });
 
+var vids=[{link:'http://www.youtube.com/embed/s2QMYFc9QQk', hdr:'Woot'},
+{link:'http://www.youtube.com/embed/s2QMYFc9QQk', hdr:"o my"}];
+
+
 app.get('/portfolio', function(req,res){
     portinterface.getMedia(function(error, grids){
+     		console.log(grids);
+     		console.log(vids);
 		res.render('boxdisplays.jade',{locals:{
 			title:"Portfolio",
 			navItems: navbar,
 			sideItems:sides,
-			sectionItems:[{id:"talks", hdr:"Talks and Outreach", gridItems:grids},
-						  {id:"projects", hdr:"Projects", gridItems:grids}]			
+			sidebar:"Sidebar",
+			sectionItems:[{id:"talks", hdr:"Talks and Outreach", 
+			               vidItems:vids,gridItems:grids},
+			              {id:"projects", hdr:"Projects",
+			                gridItems:grids}]			
 			}});
 		});
 });
@@ -86,6 +90,7 @@ app.get('/media', function(req,res){
 			title:"Media Coverage",
 			navItems: navbar,
 			sideItems:sides,
+			sidebar:"Sidebar",
 			sectionItems:[{id:"print", hdr:"Print Articles", gridItems:grids},
 						  {id:"videos", hdr:"Videos", gridItems:grids},
 						  {id:"webarticles",hdr:"Online Articles", gridItems:grids}]			
@@ -98,6 +103,7 @@ app.get('/media/new', function(req, res) {
         title: 'Set New Media',
         navItems: navbar,
 		sideItems:sides,
+		sidebar:"Sidebar",
         blankimage:""
     }
     });
@@ -115,7 +121,68 @@ app.post('/media/new', function(req, res){
     });
 });	
 
+app.get('/contact', function(req,res){
+   	res.render('contact.jade',{locals:{
+		title:"Contact Jeff",
+        navItems: navbar,
+		sideItems:sides,
+		sidebar:"Sidebar",
+		}});
+});
 
+app.post('/contact',function(req,res,next){
+	    var recaptcha = new recaptcha_async.reCaptcha();
+
+        // Eventhandler that is triggered by checkAnswer()
+        recaptcha.on('data', function (recaptcha_response) {
+                if(recaptcha_response.is_valid){
+					var email = req.param("email");
+					var subject = req.param("subject");
+					var message = req.param("message");
+					var name = req.param("name");
+					console.log(name+","+email);
+					
+					
+					emailer.send({
+						host:'smtp.gmail.com',
+						port:'465',
+						ssl:true,
+						domain:'gmail.com',
+						to:'jeffreyilipton@gmail.com',
+						from:'jeffreyiliptonsbot@gmail.com',
+						subject: subject,
+						body:'email from :'+name+'<'+email+'>\n'+message,
+						authentication:'login',
+						username:'jeffreyiliptonsbot',
+						password:'MyBotIsDumb1'
+					},
+					function(err,result){
+						if(err){console.log(err);}
+					});
+					
+					
+					
+					
+					
+					
+                }else{
+					console.log("SPAM!!!");
+					
+	            }
+                res.render('contact.jade', {
+							locals: {
+									title: recaptcha_response.is_valid ? 'valid' : 'invalid'
+									}
+			    });
+        });
+
+        // Check the user response by calling the google servers
+        // and sends a 'data'-event
+        recaptcha.checkAnswer('6LcPwM8SAAAAABDeDYyKeDksx5xcUeEg9sR1lSuj',  // private reCaptchakey 
+                          req.connection.remoteAddress,
+                          req.body.recaptcha_challenge_field,
+                          req.body.recaptcha_response_field);
+});
 
 app.listen(3002);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

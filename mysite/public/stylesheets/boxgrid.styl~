@@ -1,7 +1,7 @@
 //- BoxGrid Formatting  
 #contentTable
-	display table
-	border-collapse collapse
+  display table
+  border-collapse collapse
 
 
 .boxgrid
