@@ -1,0 +1,30 @@
+Databases
+
+vids
+|-link // for Iframe
+|-title //title of the video
+|-date // date of the vid
+|-type // is talk/press/outreach/project
+|-tags []
+
+boxes
+|-link // to click through
+|-image // link to image src
+|-hdr // hear for the text
+|-txt // caption text
+|-date // date of the item
+|-type // award/talk/press/outreach/projects
+|-tags [] // 
+
+papers
+|-citation // text of the citation
+|-links []
+    |-txt // text of the link
+    |-addr // src of link
+|-date
+|-location // SFF, RPJ, etc
+|-type //Journal, confrence, etc
+|-tags
+
+
+

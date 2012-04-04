@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 	var typeval = $("#mediaType").val();
 	var tagsval = $("#mediaTags").val();
-
+        console.log("vals"+typeval+","+tagsval);
        
         if (settings.previewed==0){
 			$(".cover a h3").text(hdrval);

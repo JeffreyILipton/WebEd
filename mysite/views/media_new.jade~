@@ -48,10 +48,10 @@ body
                 input(type="text", name="clink", id="mediaLink")
             div
                 span Type (talk/press/projec)
-                input(type='text',name='btype', id="mediaType")
+                input(type='text',name=btype, id="mediaType")
             div 
                 span Tags (foo,bar,etc)
-                input(type='text',name='btags', id="mediaTags")
+                input(type='text',name=btags, id="mediaTags")
             div#newItem
             input#submit(type="submit", value="preview")
       

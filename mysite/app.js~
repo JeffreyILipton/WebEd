@@ -33,68 +33,74 @@ app.configure('production', function(){
 });
 
 portinterface = new PortfolioInterface("localhost", 27017);	
-
+var myintro = {hdr:"Welcome to JeffreyILipton.com",txt:"This is the personal website for Jeffrey Lipton"};
 var navbar = [{link:"/","text":"Home"},
+                  {link:"/cv","text":"C.V."},
 	          {link:"/media","text":"Media"},
-	          {link:"/portfolio","text":"portfolio"},
+	          {link:"/talks","text":"Talks and Outreach"},
 	          {link:"/contact","text":"Contact"}];
 
 var sides =[{link:"http://www.google.com","txt":"google"},
             {link:"http://www.bing.com","txt":"bing"},
             {link:"http://www.yahoo.com","txt":"yahoo"}];
 
-/*var grids = [{image:"http://d2o0t5hpnwv4c1.cloudfront.net/373_html5/final/images/flower.png",link:"http://www.google.com","hdr":"woot","txt":"Awww yeah"},
-			 {image:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.jpg", link:"http://www.news.cornell.edu/stories/Dec11/NYCInnovation.html","hdr":"Hotel Innovation","txt":"Presented at the Cornell NYC innovation network"},];
-*/
 
 // Routes
-var myintro = {hdr:"Welcome to JeffreyILipton.com",txt:"This is the personal website for Jeffrey Lipton"};
 app.get('/', function(req,res){
-    portinterface.getMedia(function(error, grids){
+    portinterface.getBoxesByType('talk',function(error,grids){
 		res.render('index.jade',{locals:{
 			title:"JeffreyILipton.com",
 			navItems: navbar,
 			sideItems:sides,
 			sidebar:"Sidebar",
 			homeintro: myintro,
-			gridItems:grids}
+			gridItems:grids,
+			vidItems:[]}
 			});
 		});
 });
 
-var vids=[{link:'http://www.youtube.com/embed/s2QMYFc9QQk', hdr:'Woot'},
-{link:'http://www.youtube.com/embed/s2QMYFc9QQk', hdr:"o my"}];
+
+app.get('/cv',function(req,res){
+    res.render('index.jade',{locals:{
+                 title:'CV',
+                 navItems:navbar,
+                 sideItems:sides,
+                 sidebar:'Sidebar',
+                 homeintro: myintro,
+                 gridItems:[],
+                 vidItems:[]}
+                 });
+});
 
 
-app.get('/portfolio', function(req,res){
-    portinterface.getMedia(function(error, media){
-            portinterface.getTalks(function(error,talks){
-                console.log(talks);
-                console.log(media);
+app.get('/talks', function(req,res){
+    portinterface.getBoxesByType('talk', function(error,talkgrids){
+       portinterface.getVidsByType('talk',function(error,talkvids){
+                 //console.log(talks);
+                //console.log(media);
 		res.render('boxdisplays.jade',{locals:{
 			title:"Portfolio",
 			navItems: navbar,
 			sideItems:sides,
 			sidebar:"Sidebar",
 			sectionItems:[{id:"talks", hdr:"Talks and Outreach", 
-			               vidItems:talks,gridItems:[]},
-			              {id:"projects", hdr:"Projects",
-			                vidItems:[], gridItems:media}]			
+			               vidItems:talkvids, gridItems:talkgrids}]			
 			}});
 		});
-	     });
+	
+    });
 });
 
 app.get('/media', function(req,res){
-    portinterface.getMedia(function(error, grids){
+    portinterface.getBoxesByType('media',function(error,grids){
 		res.render('boxdisplays.jade',{locals:{
 			title:"Media Coverage",
 			navItems: navbar,
 			sideItems:sides,
 			sidebar:"Sidebar",
-			sectionItems:[{id:"print", hdr:"Print Articles", vidItems:[], gridItems:grids},
-						  {id:"videos", hdr:"Videos", vidItems:[],gridItems:grids},
-						  {id:"webarticles",hdr:"Online Articles",vidItems:[], gridItems:grids}]			
+			sectionItems:[{id:"print", hdr:"Media", vidItems:[], gridItems:grids}]
+//						  {id:"videos", hdr:"Videos", vidItems:vids,gridItems:grids}]
 			}});
 		});
 });
@@ -111,12 +117,17 @@ app.get('/media/new', function(req, res) {
 });
 
 app.post('/media/new', function(req, res){
-    console.log("posted");
-    portinterface.saveMedia({
+//    console.log("posted");
+//    console.log(req.param('type'));
+//    console.log(req.param('tags'));
+
+    portinterface.saveBox({
         image: req.param('img'),
         link: req.param('link'),
         hdr: req.param("hdr"),
         txt: req.param("txt")
+        type: req.param('type'),
+        tags: req.param('tags').split(",")
         },function( error, docs) {
         res.redirect('/')
     });
@@ -125,7 +136,7 @@ app.post('/media/new', function(req, res){
 app.get('/contact', function(req,res){
    	res.render('contact.jade',{locals:{
 		title:"Contact Jeff",
-        navItems: navbar,
+                navItems: navbar,
 		sideItems:sides,
 		sidebar:"Sidebar",
 		}});

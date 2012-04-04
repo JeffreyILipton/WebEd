@@ -9,33 +9,43 @@ PortfolioInterface = function(host, port) {
   this.db.open(function(){});
 };
 
-//getMediaCollection
-PortfolioInterface.prototype.getMediaCollection= function(callback) {
-  this.db.collection('media', function(error, article_collection) {
+//getCollection
+PortfolioInterface.prototype.getCollection= function(collection,callback) {
+  this.db.collection(collection, function(error, article_collection) {
     if( error ) callback(error);
     else callback(null, article_collection);
   });
 };
 
 
-//getMedia
-PortfolioInterface.prototype.getMedia= function(callback) {
-  this.db.collection('media', function(error, article_collection) {
-    if( error ) callback(error);
-    else{
-		article_collection.find().toArray(function(error, results) {
+//getQuery
+PortfolioInterface.prototype.getQuery= function(collection,search,callback) {
+  this.db.collection(collection, function(error, article_collection) {
+    if( error ){
+       callback(error);
+    }else{
+		article_collection.find(search).toArray(function(error, results) {
 			callback(null, results);
 		});
 	}
   });
 };
 
+PortfolioInterface.prototype.getBoxesByType = function(typestring,callback){
+	this.getQuery('boxes',{type:typestring},callback);
+};
+PortfolioInterface.prototype.getVidsByType = function(typestring,callback){
+	this.getQuery('vids',{type:typestring},callback);
+}
+
+
+
 
 
 //saveMedia
-PortfolioInterface.prototype.saveMedia = function(articles, callback) {
+PortfolioInterface.prototype.saveBox = function(articles, callback) {
 	console.log("working at saveMedia");
-    this.getMediaCollection(function(error, article_collection) {
+    this.getCollection('boxes',function(error, article_collection) {
       if( error ) callback(error)
       else {
 		console.log("received: "+articles);
@@ -50,8 +60,8 @@ PortfolioInterface.prototype.saveMedia = function(articles, callback) {
 		  if (typeof(article.hdr)=="undefined"){article.hdr="";}
 		  if (typeof(article.txt)=="undefined"){article.txt="";}
 		  if ((typeof(article.image)=="undefined")){throw("noimg");}
-		  
-		  
+		  if (typeof(article.tags)=="undefined"){article.tags=[];}
+		  if (typeof(article.type)=="undefined"){article.type="";}
 		}
 		
         article_collection.insert(articles, function() {
@@ -63,29 +73,7 @@ PortfolioInterface.prototype.saveMedia = function(articles, callback) {
 };
 
 
-//getTalksCollection
-PortfolioInterface.prototype.getTalksCollection= function(callback) {
-  this.db.collection('talks', function(error, article_collection) {
-      if( error ) callback(error);
-      else callback(null, article_collection);
-  });
-};
-            
-            
-//getTalks
-PortfolioInterface.prototype.getTalks= function(callback) {
-  this.db.collection('talks', function(error, article_collection) {
-       if( error ) callback(error);
-       else{
-         article_collection.find().toArray(function(error, results) {
-           callback(null, results);
-         });
-      }
-  });
-};
-                                                                                        
-                                                                                        
- 
+
 //saveTalks
 PortfolioInterface.prototype.saveTalks = function(articles, callback) {
   this.getTalksCollection(function(error, article_collection) {
