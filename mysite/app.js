@@ -67,18 +67,22 @@ var vids=[{link:'http://www.youtube.com/embed/s2QMYFc9QQk', hdr:'Woot'},
 
 
 app.get('/portfolio', function(req,res){
-    portinterface.getMedia(function(error, grids){
+    portinterface.getMedia(function(error, media){
+            portinterface.getTalks(function(error,talks){
+                //console.log(talks);
+                //console.log(media);
 		res.render('boxdisplays.jade',{locals:{
 			title:"Portfolio",
 			navItems: navbar,
 			sideItems:sides,
 			sidebar:"Sidebar",
 			sectionItems:[{id:"talks", hdr:"Talks and Outreach", 
-			               vidItems:vids,gridItems:grids},
+			               vidItems:talks,gridItems:[]},
 			              {id:"projects", hdr:"Projects",
-			                vidItems:[], gridItems:grids}]			
+			                vidItems:[], gridItems:media}]			
 			}});
 		});
+	     });
 });
 
 app.get('/media', function(req,res){
