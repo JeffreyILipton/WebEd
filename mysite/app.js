@@ -69,8 +69,6 @@ var vids=[{link:'http://www.youtube.com/embed/s2QMYFc9QQk', hdr:'Woot'},
 
 app.get('/portfolio', function(req,res){
     portinterface.getMedia(function(error, grids){
-     		console.log(grids);
-     		console.log(vids);
 		res.render('boxdisplays.jade',{locals:{
 			title:"Portfolio",
 			navItems: navbar,
@@ -170,9 +168,12 @@ app.post('/contact',function(req,res,next){
 					
 	            }
                 res.render('contact.jade', {
-							locals: {
-									title: recaptcha_response.is_valid ? 'valid' : 'invalid'
-									}
+					locals: {
+					   title: recaptcha_response.is_valid ? 'valid' : 'invalid',
+					   navItems:navbar,
+					   sideItems:sides,
+					   sidebar:"Sides"
+					}
 			    });
         });
 
