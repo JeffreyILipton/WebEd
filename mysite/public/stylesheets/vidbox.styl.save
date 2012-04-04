@@ -1,11 +1,5 @@
 //- BoxGrid Formatting  
-#contentTable
-	display table
-	border-collapse collapse
-
-
-.boxgrid
-        display table-cell
+.vidbox
 	width 280px
 	height 208px
 	margin 10px
@@ -15,14 +9,6 @@
 	overflow hidden
 	position relative
 
-.boxgrid img
-	position absolute
-	top 0
-	left 0
-	border 0
-	
-	//width 280px
-	//height 208px
 	
 .boxcaption
 	float left
@@ -37,13 +23,9 @@
 	top  260
 	left 0
 
-.caption .boxcaption
+.vidcaption 
 	top  220
-	left 0
-	
-.cover
-	top -260
-	left 0
+	le
 	
 	a
 		display block

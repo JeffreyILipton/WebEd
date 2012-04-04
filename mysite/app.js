@@ -35,7 +35,6 @@ app.configure('production', function(){
 portinterface = new PortfolioInterface("localhost", 27017);	
 
 var navbar = [{link:"/","text":"Home"},
-	          {link:"/about","text":"About"},
 	          {link:"/media","text":"Media"},
 	          {link:"/portfolio","text":"portfolio"},
 	          {link:"/contact","text":"Contact"}];
