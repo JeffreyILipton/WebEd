@@ -5,6 +5,7 @@
 var express = require('express')
   , routes = require('./routes');
 
+var CVarray = require('./papers').CVarray;
 var recaptcha_async = require('recaptcha-async');
 var emailer = require('mailer');
 
@@ -60,10 +61,10 @@ app.get('/', function(req,res){
 		});
 });
 
-cvobject = [{hdr:"Confrence Papers",cvItems:[{citation:"FAb@home model 2...",links:[{txt:"pdf",addr:"/paper.pdf"}]},
-					     {citation:"FAb@home model 3...",links:[{txt:"pdf",addr:"/paper2.pdf"}]},
-					     {citation:"Foooooods",links:[{txt:"pdf",addr:"/paper3.pdf"}]}]},
-	    {hdr:"Journal Papers",cvItems:[{citation:"ROBOTs",links:[{txt:"pdf",addr:"/paper4.pdf"}]}]}];
+cvobject = CVarray;
+	
+	
+	   
 
 
 app.get('/cv',function(req,res){
