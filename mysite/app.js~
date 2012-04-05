@@ -60,6 +60,11 @@ app.get('/', function(req,res){
 		});
 });
 
+cvobject = [{hdr:"Confrence Papers",cvItems:[{citation:"FAb@home model 2...",links:[{txt:"pdf",addr:"/paper.pdf"}]},
+					     {citation:"FAb@home model 3...",links:[{txt:"pdf",addr:"/paper2.pdf"}]},
+					     {citation:"Foooooods",links:[{txt:"pdf",addr:"/paper3.pdf"}]}]},
+	    {hdr:"Journal Papers",cvItems:[{citation:"ROBOTs",links:[{txt:"pdf",addr:"/paper4.pdf"}]}]}];
+
 
 app.get('/cv',function(req,res){
     res.render('index.jade',{locals:{
@@ -67,10 +72,9 @@ app.get('/cv',function(req,res){
                  navItems:navbar,
                  sideItems:sides,
                  sidebar:'Sidebar',
-                 homeintro: myintro,
-                 gridItems:[],
-                 vidItems:[]}
-                 });
+                 CV:cvobject
+                 }
+              });
 });
 
 
@@ -125,9 +129,9 @@ app.post('/media/new', function(req, res){
         image: req.param('img'),
         link: req.param('link'),
         hdr: req.param("hdr"),
-        txt: req.param("txt")
-        type: req.param('type'),
-        tags: req.param('tags').split(",")
+        txt: req.param("txt"),
+        type: String(req.param('type')).toLowerCase(),
+        tags: String(req.param('tags')).split(",")
         },function( error, docs) {
         res.redirect('/')
     });
