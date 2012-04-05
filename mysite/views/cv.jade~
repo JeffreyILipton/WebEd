@@ -41,9 +41,9 @@ body
          h2=cvType.hdr
          -each cvItem in cvType.cvItems
            div.cvItem
-            p=cvItem.citation
+            p=cvItem.citation+' '
              -each linkItem in cvItem.links
-              a(src=linkItem.addr)=linkItem.txt
+              a(src=linkItem.addr)=linkItem.txt+' '
 
 
 
