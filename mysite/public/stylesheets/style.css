@@ -3,7 +3,10 @@ article aside details figcaption figure footer heater hgroup menu section {
 }
 body {
   width: 968;
-  padding: 50px;
+  padding-top: 0px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-botton: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
@@ -60,10 +63,13 @@ aside section {
   -webkit-border-radius: 11px;
 }
 aside section ul {
-  margin: 0 0 0 22px;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
   list-style: none;
 }
 aside section ul li a {
+  margin-top: 10px;
+  font-size: 120%;
   display: block;
   text-decoration: none;
   color: #000;

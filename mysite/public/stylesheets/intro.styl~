@@ -17,7 +17,7 @@
         //width 336px
 
     h1 
-        padding 60px 0 22px 0
+        padding 0 0 22px 0
         font-weight normal
         color #fff
     

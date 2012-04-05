@@ -4,14 +4,29 @@
 
 var express = require('express')
   , routes = require('./routes');
-
-var CVarray = require('papers');
+var CVarray = require('./papers').CVarray;
 var recaptcha_async = require('recaptcha-async');
 var emailer = require('mailer');
-
 var portinterface = require('./portfoliointerface').PortInterface;
 
+// Load Settings
+var sideTitle = require('./settings').sideTitle;
+var navBar = require('./settings').navBar;
+var sides = require('./settings').sides;
+var myintro = require('./settings').intro;
+
+
+//var sideTitle = 'Links';
+
+
+
+
 var app = module.exports = express.createServer();
+
+var portinterface = new PortfolioInterface("localhost", 27017);	
+//var myintro = {hdr:"Welcome to JeffreyILipton.com",txt:"This is the personal website for Jeffrey Lipton"};
+
+
 
 // Configuration
 
@@ -33,17 +48,17 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
-portinterface = new PortfolioInterface("localhost", 27017);	
-var myintro = {hdr:"Welcome to JeffreyILipton.com",txt:"This is the personal website for Jeffrey Lipton"};
-var navbar = [{link:"/","text":"Home"},
-                  {link:"/cv","text":"C.V."},
-	          {link:"/media","text":"Media"},
-	          {link:"/talks","text":"Talks and Outreach"},
-	          {link:"/contact","text":"Contact"}];
 
-var sides =[{link:"http://www.google.com","txt":"google"},
-            {link:"http://www.bing.com","txt":"bing"},
-            {link:"http://www.yahoo.com","txt":"yahoo"}];
+
+//var navbar = [{link:"/","text":"Home"},
+//                  {link:"/cv","text":"C.V."},
+//	          {link:"/media","text":"Media"},
+//	          {link:"/talks","text":"Talks and Outreach"},
+//	          {link:"/contact","text":"Contact"}];
+
+//var sides =[{link:"http://www.linkedin.com/pub/jeffrey-lipton/26/203/3ba","txt":"LinkedIn"},
+//            {link:"http://www.creativemachines.cornell.edu","txt":"Creative Machines Lab"},
+//            {link:"http://www.fabathome.org","txt":"Fab@Home"}];
 
 
 // Routes
@@ -53,7 +68,7 @@ app.get('/', function(req,res){
 			title:"JeffreyILipton.com",
 			navItems: navbar,
 			sideItems:sides,
-			sidebar:"Sidebar",
+			sidebar:sideTitle,
 			homeintro: myintro,
 			gridItems:grids,
 			vidItems:[]}
@@ -61,19 +76,13 @@ app.get('/', function(req,res){
 		});
 });
 
-cvobject = CVarray;
-	
-	
-	   
-
-
 app.get('/cv',function(req,res){
     res.render('cv.jade',{locals:{
                  title:'CV',
                  navItems:navbar,
                  sideItems:sides,
-                 sidebar:'Sidebar',
-                 CV:cvobject
+                 sidebar:sideTitle,
+                 CV:CVarray
                  }
               });
 });
@@ -82,13 +91,11 @@ app.get('/cv',function(req,res){
 app.get('/talks', function(req,res){
     portinterface.getBoxesByType('talk', function(error,talkgrids){
        portinterface.getVidsByType('talk',function(error,talkvids){
-                 //console.log(talks);
-                //console.log(media);
-		res.render('boxdisplays.jade',{locals:{
+      		res.render('boxdisplays.jade',{locals:{
 			title:"Portfolio",
 			navItems: navbar,
 			sideItems:sides,
-			sidebar:"Sidebar",
+			sidebar:sideTitle,
 			sectionItems:[{id:"talks", hdr:"Talks and Outreach", 
 			               vidItems:talkvids, gridItems:talkgrids}]			
 			}});
@@ -103,7 +110,7 @@ app.get('/media', function(req,res){
 			title:"Media Coverage",
 			navItems: navbar,
 			sideItems:sides,
-			sidebar:"Sidebar",
+			sidebar:sideTitle,
 			sectionItems:[{id:"print", hdr:"Media", vidItems:[], gridItems:grids}]
 //						  {id:"videos", hdr:"Videos", vidItems:vids,gridItems:grids}]
 			}});
@@ -115,17 +122,13 @@ app.get('/media/new', function(req, res) {
         title: 'Set New Media',
         navItems: navbar,
 		sideItems:sides,
-		sidebar:"Sidebar",
+		sidebar:sideTitle,
         blankimage:""
     }
     });
 });
 
 app.post('/media/new', function(req, res){
-//    console.log("posted");
-//    console.log(req.param('type'));
-//    console.log(req.param('tags'));
-
     portinterface.saveBox({
         image: req.param('img'),
         link: req.param('link'),
@@ -143,7 +146,7 @@ app.get('/contact', function(req,res){
 		title:"Contact Jeff",
                 navItems: navbar,
 		sideItems:sides,
-		sidebar:"Sidebar",
+		sidebar:sideTitle,
 		}});
 });
 
