@@ -50,17 +50,6 @@ app.configure('production', function(){
 
 
 
-//var navbar = [{link:"/","text":"Home"},
-//                  {link:"/cv","text":"C.V."},
-//	          {link:"/media","text":"Media"},
-//	          {link:"/talks","text":"Talks and Outreach"},
-//	          {link:"/contact","text":"Contact"}];
-
-//var sides =[{link:"http://www.linkedin.com/pub/jeffrey-lipton/26/203/3ba","txt":"LinkedIn"},
-//            {link:"http://www.creativemachines.cornell.edu","txt":"Creative Machines Lab"},
-//            {link:"http://www.fabathome.org","txt":"Fab@Home"}];
-
-
 // Routes
 app.get('/', function(req,res){
     portinterface.getBoxesByType('talk',function(error,grids){
@@ -105,7 +94,7 @@ app.get('/talks', function(req,res){
 });
 
 app.get('/media', function(req,res){
-    portinterface.getBoxesByType('media',function(error,grids){
+    portinterface.getBoxesByType('press',function(error,grids){
 		res.render('boxdisplays.jade',{locals:{
 			title:"Media Coverage",
 			navItems: navbar,

@@ -10,18 +10,21 @@
   -khtml-background-size: 100%;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
+  overflow-y: hidden;
 }
 #intro h1 p {
   position: relative;
 }
 #intro h1 {
-  padding: 60px 0 22px 0;
+  padding: 60px 0 2px 0;
   font-weight: normal;
   color: #fff;
 }
 #intro p {
-  padding: 0;
+  padding: 0 0 0 0;
   color: #d9f499;
+  margin: 0 0 0 0;
+  text-overflow: ellipsis;
 }
 #intro #captioning {
   padding: 0px 44px 0px 60px;

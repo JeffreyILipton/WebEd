@@ -11,7 +11,7 @@ var portinterface = require('./portfoliointerface').PortInterface;
 
 // Load Settings
 var sideTitle = require('./settings').sideTitle;
-var navBar = require('./settings').navBar;
+var navbar = require('./settings').navBar;
 var sides = require('./settings').sides;
 var myintro = require('./settings').intro;
 
@@ -105,7 +105,7 @@ app.get('/talks', function(req,res){
 });
 
 app.get('/media', function(req,res){
-    portinterface.getBoxesByType('media',function(error,grids){
+    portinterface.getBoxesByType('press',function(error,grids){
 		res.render('boxdisplays.jade',{locals:{
 			title:"Media Coverage",
 			navItems: navbar,
