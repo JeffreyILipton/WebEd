@@ -9,11 +9,10 @@ head
 
 
 body
-  header
-    hgroup
-      h1= title
-
+ header
   section#guide
+    div.logo
+      img(src='/images/SeraphIcon-5-blue.png')
     div.guidebar
       div.searchbar
         form.searchform(method='post')
@@ -28,17 +27,30 @@ body
             input(type='text',name='search',id='search',class='searchinput')
           input#go(type='submit', value='go')
       div.breadcrumbs
-        div.breadButtons
-          a.backbutton back
-          a.fowardbutton foward
-        div
-          ul.crumbs
-           li
+        ul.crumbs
+          li
+            div.breadButtons
+              a.backbutton back
+              a.fowardbutton foward
+          li
             a Home
-           li
+          li
             a Apps
      
     div.accountDiv
       a.accountButton Jeff
       a.cartButton Cart
       
+      
+ div#content
+    aside
+      section#sidebar
+        header
+           h3 Quick Links
+        ul
+          -each sideItem in sideItems
+           li
+             a(href='sideItem.link')=sideItem.text
+    div#mainContent
+    
+                

@@ -9,11 +9,10 @@ head
 
 
 body
-  header
-    hgroup
-      h1= title
-
+ header
   section#guide
+    div.logo
+      img(src='/images/SeraphIcon-5-blue.png')
     div.guidebar
       div.searchbar
         form.searchform(method='post')
@@ -42,3 +41,16 @@ body
       a.accountButton Jeff
       a.cartButton Cart
       
+      
+ div#content
+    aside
+      section#sidebar
+        header
+           h3 Quick Links
+        ul
+          -each sideItem in sideItems
+           li
+             a(href='sideItem.link')=sideItem.txt
+    div#mainContent
+    
+                

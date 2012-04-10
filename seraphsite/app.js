@@ -33,11 +33,15 @@ app.configure('production', function(){
 });
 
 
+var sides =[{link:"http://www.linkedin.com/pub/jeffrey-lipton/26/203/3ba","txt":"LinkedIn"},
+            {link:"http://creativemachines.cornell.edu","txt":"Creative Machines Lab"},
+            {link:"http://www.fabathome.org","txt":"Fab@Home"}];
 
 // Routes
 app.get('/', function(req,res){
 	res.render('index.jade',{locals:{
-			  title:"SeraphStore"
+			  title:"SeraphStore",
+              sideItems:sides
 			  }
 	});
 });
