@@ -1,0 +1,33 @@
+#intro {
+  position: relative;
+  margin-top: 66px;
+  margin-left: 20px;
+  margin-bottom: -40px;
+  padding: 0px 0px 0px 0px;
+  background: #467612 url("http://d2o0t5hpnwv4c1.cloudfront.net/373_html5/final/images/intro_background.png") repeat-x;
+  -webkit-background-size: 100%;
+  -o-background-size: 100%;
+  -khtml-background-size: 100%;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  overflow-y: hidden;
+}
+#intro h1 p {
+  position: relative;
+}
+#intro h1 {
+  padding: 60px 0 2px 0;
+  font-weight: normal;
+  color: #fff;
+}
+#intro p {
+  padding: 0 0 0 0;
+  color: #d9f499;
+  margin: 0 0 0 0;
+  text-overflow: ellipsis;
+}
+#intro #captioning {
+  padding: 0px 44px 0px 60px;
+  width: 300px;
+  height: 242px;
+}

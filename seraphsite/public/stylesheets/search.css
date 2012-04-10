@@ -1,0 +1,49 @@
+.searchbar {
+  width: 70%;
+  text-align: center;
+  float: left;
+  display: inline;
+  background: #000;
+  color: #fff;
+}
+.searchbar div {
+  display: inline;
+  float: left;
+  padding: 0 20px 0 20px;
+}
+.breadButtons {
+  display: inline;
+  padding-left: 10px;
+}
+.breadcrumbs {
+  display: block;
+  background: #393752;
+  left: 0;
+}
+.breadcrumbs ul {
+  display: block;
+  margin: 0 auto;
+  list-style: none;
+  width: 70%;
+  border: solid 1px #cacaca;
+  margin: 0px;
+  padding: 0px;
+}
+.breadcrumbs ul li {
+  display: inline;
+  float: left;
+  padding-left: 10px;
+}
+.breadcrumbs ul li a {
+  display: inline;
+  height: 30px;
+  margin-right: 20px;
+  padding-right: 15px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  color: #777;
+}
+.breadcrumbs ul li a:hover {
+  color: #f5f;
+}

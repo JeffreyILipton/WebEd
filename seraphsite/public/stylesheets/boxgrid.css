@@ -1,0 +1,50 @@
+#contentTable {
+  display: table;
+  border-collapse: collapse;
+}
+.boxgrid,
+display table-cell {
+  width: 280px;
+  height: 208px;
+  margin: 10px;
+  float: left;
+  background: #161613;
+  border: solid 2px #8399af;
+  overflow: hidden;
+  position: relative;
+}
+.boxgrid img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+}
+.boxcaption {
+  float: left;
+  position: absolute;
+  background: #000;
+  color: #fff;
+  height: 100px;
+  width: 100%;
+  poacity: 0.8;
+}
+.captionfull .boxcaption {
+  top: 260;
+  left: 0;
+}
+.caption .boxcaption {
+  top: 220;
+  left: 0;
+}
+.cover {
+  top: -260;
+  left: 0;
+}
+.cover a {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+}
+.cover a h3 {
+  text-align: center;
+}

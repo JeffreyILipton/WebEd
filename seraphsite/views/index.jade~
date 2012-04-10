@@ -1,0 +1,43 @@
+html(lang="en")
+head
+  meta(charset="utf-8")
+  title = title
+  link(rel="stylesheet", href="/stylesheets/rest.css")
+  link(rel="stylesheet", href="/stylesheets/style.css")
+  link(rel="stylesheet", href="/stylesheets/nav.css")
+  link(rel="stylesheet", href="/stylesheets/search.css")
+  script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+  script(src="/javascripts/testimage.js")
+
+
+body
+  header
+    hgroup
+      h1= title
+
+  section#guide
+    div.guidebar
+      div.searchbar
+        form.searchform(method='post')
+          div.label Search
+          div.searchSelector
+            span co-create
+            input(type='checkbox',name='create', class='searchOption')
+          div.searchSelector 
+            span kits
+            input(type='checkbox',name='kits', class='searchOption')
+          div.searchText
+            input(type='text',name='search',id='search',class='searchinput')
+          input#go(type='submit', value='go')
+      div.breadcrumbs
+        div.breadButtons
+          a.backbutton back
+          a.fowardbutton foward
+        div
+          ul.crumbs
+           li
+            a Home
+           li
+            a Apps
+       
+    

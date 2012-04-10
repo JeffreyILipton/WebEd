@@ -1,0 +1,106 @@
+html(lang="en")
+head
+  meta(charset="utf-8")
+  title Testing form
+  link(rel="stylesheet", href="/stylesheets/rest.css")
+  link(rel="stylesheet", href="/stylesheets/style.css")
+  link(rel="stylesheet", href="/stylesheets/nav.css")
+  link(rel='stylesheet', href='/stylesheets/jqtransformplugin/jqtransform.css')
+  link(rel='stylesheet', href='/stylesheets/formValidator/validationEngine.jquery.css')
+  link(rel='stylesheet', href='/stylesheets/demo.css')
+  script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+  script(src='/javascripts/serializeobject.js')
+  script(src='/javascripts/jqtransformplugin/jquery.jqtransform.js')
+  script(src='/javascripts/contactscript.js')
+  script(src='/javascripts/formValidator/jquery.validationEngine.js')
+  script(src='http://www.google.com/recaptcha/api/js/recaptcha_ajax.js')
+
+
+body
+body
+  header
+    hgroup
+      h1= title
+    nav
+      ul
+       -each navItem in navItems
+        li
+         a(href=navItem.link)=navItem.text
+  
+  
+  div#content
+    aside
+       section#sideways
+         header
+           h3=sidebar
+         ul
+           -each sideItem in sideItems
+            li
+              a(href=sideItem.link)=sideItem.txt
+    div#mainContent
+     div#form-container
+      h1 Fancy Contact Form
+        h2 Drop us a line and we will get back to you
+        form#contact-form.jqtransformdone(name='contact-form', method='post')
+          table(width='100%', border='0', cellspacing='0', cellpadding='5')
+            tbody
+              tr
+                td(width='15%')
+                  label(for='name') Name
+                td(width='70%')
+                  .jqTransformInputWrapper.jqTransformSafari(style='width: 210px;')
+                    .jqTransformInputInner
+                      div
+                        input(class='jqtranformdone jqTransformInput validate[required,custom[onlyLetter]]', id='name',type='text', name='name', value='', style='width: 226px;')
+                td#errOffset(width='15%')  
+              tr
+                td
+                  label(for='email') Email
+                td
+                  .jqTransformInputWrapper.jqTransformSafari(style='width: 210px;')
+                    .jqTransformInputInner
+                      div
+                        input(class='validate[required,custom[email]] jqtranformdone jqTransformInput',id='email', type='text', name='email', value='', style='width: 226px;')
+                td
+              tr
+                td
+                  label(for='subject') Subject
+                td
+                  .jqTransformInputWrapper.jqTransformSafari(style='width: 210px;')
+                    .jqTransformInputInner
+                      div
+                        input(id='subject', class='validate[required,custom[onlyLetter]] jqtranformdone jqTransformInput', type='text', name='subject', value='', style='width: 226px;')
+                td 
+              tr
+                td(valign='top')
+                  label(for='message') Message
+                td
+                  table.jqTransformTextarea(cellspacing='0', cellpadding='0', border='0')
+                    tbody
+                      tr
+                        td#jqTransformTextarea-tl
+                        td#jqTransformTextarea-tm
+                        td#jqTransformTextarea-tr
+                      tr
+                        td#jqTransformTextarea-ml  
+                        td#jqTransformTextarea-mm.jqTransformSafariTextarea
+                          div(style='height: 80px; width: 192px;')
+                            textarea(class='validate[required] jqtransformdone', id='message', name='message', cols='35', rows='5')
+                        td#jqTransformTextarea-mr  
+                      tr
+                        td#jqTransformTextarea-bl
+                        td#jqTransformTextarea-bm
+                        td#jqTransformTextarea-br
+                td(valign='top')  
+              tr
+                div#mycaptcha  
+              tr
+                td(valign='top')  
+                td(colspan='2')
+                  button#button.jqTransformButton(name='button', type='submit')
+                    span
+                      span Submit
+                  button#button2.jqTransformButton(name='button2', type='reset')
+                    span
+                      span Reset
+                  img#loading(src='/images/img/ajax-load.gif', width='16', height='16', alt='loading')
