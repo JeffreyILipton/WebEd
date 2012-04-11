@@ -1,0 +1,26 @@
+#mainContent {
+  display: table-cell;
+  margin-top: 10px;
+  margin-left: 30px;
+}
+#teaser {
+  margin-top: 10px;
+  margin-left: 10px;
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+.mainImage {
+  display: table-cell;
+  height: 300px;
+  width: 100%;
+}
+.sideImages {
+  display: table-cell;
+  width: 100%;
+}
+.sideImage {
+  display: block;
+  height: 107px;
+/*boarder 1px solid black*/
+}

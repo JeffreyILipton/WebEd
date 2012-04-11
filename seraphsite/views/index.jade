@@ -4,6 +4,7 @@ head
   title = title
   link(rel="stylesheet", href="/stylesheets/rest.css")
   link(rel="stylesheet", href="/stylesheets/search.css")
+  link(rel="stylesheet", href="/stylesheets/body.css")
   script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
   script(src="/javascripts/testimage.js")
 
@@ -38,7 +39,7 @@ body
             a Apps
      
     div.accountDiv
-      a.accountButton Jeff
+      a.accountButton Jeff's Account
       a.cartButton Cart
       
       
@@ -52,5 +53,11 @@ body
            li
              a(href='sideItem.link')=sideItem.txt
     div#mainContent
-    
+       section#teaser
+        div.mainImage
+          img.mainImage(src = '/images/apps-main.jpg')
+        div.sideImages
+          img.sideImage(src ='/images/SeraphIcon-5-blue.png')
+          img.sideImage(src ='/images/SeraphIcon-5-blue.png')
+          img.sideImage(src ='/images/SeraphIcon-5-blue.png')
                 

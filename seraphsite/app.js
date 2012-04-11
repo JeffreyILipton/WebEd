@@ -33,9 +33,17 @@ app.configure('production', function(){
 });
 
 
-var sides =[{link:"http://www.linkedin.com/pub/jeffrey-lipton/26/203/3ba","txt":"LinkedIn"},
-            {link:"http://creativemachines.cornell.edu","txt":"Creative Machines Lab"},
-            {link:"http://www.fabathome.org","txt":"Fab@Home"}];
+var sides =[{link:"http://www.fabathome.org","txt":"Top Picks"},
+            {link:"http://www.linkedin.com/pub/jeffrey-lipton/26/203/3ba","txt":"Education"},
+            {link:"http://creativemachines.cornell.edu","txt":"Household"},
+            {link:"http://www.fabathome.org","txt":"Eatables"},
+            {link:"http://www.fabathome.org","txt":"Spare Parts"},
+            {link:"http://www.fabathome.org","txt":"Woodshop"},
+            {link:"http://www.fabathome.org","txt":"Toys/Kids"},
+            {link:"http://www.fabathome.org","txt":"Accessories"},
+            {link:"http://www.fabathome.org","txt":"New Inventions"},
+            {link:"http://www.fabathome.org","txt":"Arts/Crafts"},
+            {link:"http://www.fabathome.org","txt":"Tech/Gizmos"}];
 
 // Routes
 app.get('/', function(req,res){
