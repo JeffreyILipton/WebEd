@@ -55,11 +55,12 @@ body
     div#mainContent
        section#teaser
         div.mainImage
-          img.mainImage(src = '/images/apps-main.jpg')
+          a(href=teaserimgs.mainlink)
+            img.mainImage(src = teaserimgs.mainimg)
         div.sideImages
-          img.sideImage(src ='/images/SeraphIcon-5-blue.png')
-          img.sideImage(src ='/images/SeraphIcon-5-blue.png')
-          img.sideImage(src ='/images/SeraphIcon-5-blue.png')
+          -each teaserimg in teaserimgs.sides
+           a(href=teaserimg.link)
+             img.sideImage(src =teaserimg.img)
        
        section#AppSelector        
          div

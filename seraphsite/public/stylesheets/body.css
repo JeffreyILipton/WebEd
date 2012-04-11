@@ -38,7 +38,12 @@
   margin-left: 10px;
   padding-left: 10px;
 }
+.apps {
+  display: block;
+}
 .app {
+  vertical-align: text-top;
+  display: inline-block;
   width: 100px;
   background: #eee;
   height: 110px;
@@ -50,8 +55,10 @@
 .app:hover {
   background: #fff;
   border: 1px solid #eee;
+  width: 99px;
+  height: 108px;
 }
-.app ahover {
+.app a:hover {
   text-decoration: none;
 }
 .app h4 {

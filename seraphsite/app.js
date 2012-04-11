@@ -61,11 +61,19 @@ var apps=[{hdr:'Logo2Fab',txt:'Program a Shape using Logo',src:"/images/SeraphIc
 {hdr:'Chess Set',txt:'Customize the set for you',src:"/images/SeraphIcon-5-blue.png",link:"#"}
 ]
 
+var teaser={mainimg:'/images/apps-main.jpg',mainlink:'#',sides:[{img:'/images/SeraphIcon-5-blue.png',link:'#'},
+                                           {img:'/images/SeraphIcon-5-blue.png',link:'#'},
+                                           {img:'/images/SeraphIcon-5-blue.png',link:'#'}]
+                                           };
+
+
+
 // Routes
 app.get('/', function(req,res){
     res.render('index.jade',{locals:{
               title:"SeraphStore",
               sideItems:sides,
+              teaserimgs:teaser,
               appdisplays:apps
               }
     });
