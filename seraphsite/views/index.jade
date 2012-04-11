@@ -60,4 +60,15 @@ body
           img.sideImage(src ='/images/SeraphIcon-5-blue.png')
           img.sideImage(src ='/images/SeraphIcon-5-blue.png')
           img.sideImage(src ='/images/SeraphIcon-5-blue.png')
+       
+       section#AppSelector        
+         div
+           span Top Apps
+         .apps
+           -each appdisplay in appdisplays
+            .app
+              a(href=appdisplay.link)
+                img(src=appdisplay.src)
+                h4=appdisplay.hdr
+                p=appdisplay.txt
                 
