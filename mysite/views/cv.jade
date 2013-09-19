@@ -41,7 +41,7 @@ body
            div.cvItem
             p=cvItem.citation+' '
              -each linkItem in cvItem.links
-              a(src=linkItem.addr)=linkItem.txt+' '
+              a(href=linkItem.addr)=linkItem.txt+' '
 
 
 
