@@ -27,6 +27,7 @@
   color: #d9f499;
   margin: 0 0 0 0;
   text-overflow: ellipsis;
+  font-size: 1.2em;
 }
 #intro #captioning {
   padding: 0px 44px 0px 60px;

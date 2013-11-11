@@ -1,4 +1,4 @@
-var myintro = {hdr:"Bio",txt:"I am a graduate of Cornell University's Applied Engineering Physics program.  Currently I am a PhD Student at the Cornell Creative Machines Lab. For the last few years I have been the leader of the Fab@Home Project and a researcher in personal manufacturing and education"};
+var myintro = {hdr:"Bio",txt:"I am a graduate of Cornell University's Applied Engineering Physics program.  Currently I am a PhD Student at the Cornell Creative Machines Lab. For the last few years I have been the leader of the Fab@Home Project and a researcher in 3D Printing"};
 
 var navbar = [{link:"/","text":"Home"},
                   {link:"/cv","text":"C.V."},
